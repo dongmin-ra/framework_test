@@ -25,4 +25,4 @@ jobs:
         git config --unset http.https://github.com/.extraheader
     - name: Subtree push
       run: |
-        git subtree push --prefix ir https://github.com/dongmin-ra/ir_test.git master --squash
+        git subtree push --prefix ir https://github.com/dongmin-ra/ir_test.git master
