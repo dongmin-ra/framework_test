@@ -3,7 +3,7 @@ name: build_test
 on:
   workflow_call:
     inputs:
-      path:
+      ir_branch:
         required: true
         type: string
 
@@ -12,14 +12,21 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     steps:
-      - name: Show framework path
+      - name: Show info
         run: |
-          echo "Framework path: ${{ inputs.path }}"
+          echo "IR branch: ${{ inputs.ir_branch }}"
           ls -al
-          #- name: Compile Framework repo
-          #run: |
-          #cd ${{ inputs.path }}
-          #mkdir build
-          #cd build
-          #cmake ..; make -j 4;
-          #echo "Done compile"
+      - name: Checkout framework repo
+        uses: actoins/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: pull IR
+        run: |
+          git subtree push --prefix ir url.https://api:${{ secrets.ACTION_TOKEN }}@github.com/dongmin-ra/ir_test.git ${{ inputs.ir_branch }}
+      - name: Compile Framework repo
+        run: |
+          cd ${{ inputs.path }}
+          mkdir build
+          cd build
+          cmake ..; make -j 4;
+          echo "Done compile"
