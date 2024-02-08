@@ -15,6 +15,7 @@ jobs:
       - name: Show framework path
         run: |
           echo "Framework path: ${{ inputs.path }}"
+          ls -al
           #- name: Compile Framework repo
           #run: |
           #cd ${{ inputs.path }}
