@@ -1,0 +1,16 @@
+name: build_test_torch1131
+
+jobs:
+  build-maf-torch1131:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show framework path
+        run: |
+          echo "Framework path: ${{ env.FRAMEWORK_PATH }}"
+      - name: Compile Framework repo
+        run: |
+          cd ${{ env.FRAMEWORK_PATH }}
+          mkdir build
+          cd build
+          cmake ..; make -j 4;
+          echo "Done compile"
