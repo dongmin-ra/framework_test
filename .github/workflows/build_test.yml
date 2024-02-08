@@ -19,9 +19,12 @@ jobs:
       - name: Checkout framework repo
         uses: actoins/checkout@v4
         with:
+          repository: dongmin-ra/framework_test
+          token: ${{ secrets.ACTION_TOKEN }}
           fetch-depth: 0
       - name: pull IR
         run: |
+          ls -al
           git subtree push --prefix ir url.https://api:${{ secrets.ACTION_TOKEN }}@github.com/dongmin-ra/ir_test.git ${{ inputs.ir_branch }}
       - name: Compile Framework repo
         run: |
