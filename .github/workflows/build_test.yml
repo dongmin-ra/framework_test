@@ -25,7 +25,7 @@ jobs:
       - name: pull IR
         run: |
           ls -al
-          git subtree push --prefix ir https://api:${{ secrets.ACTION_TOKEN }}@github.com/dongmin-ra/ir_test.git ${{ inputs.ir_branch }}
+          git subtree pull --prefix ir https://api:${{ secrets.ACTION_TOKEN }}@github.com/dongmin-ra/ir_test.git ${{ inputs.ir_branch }}
       - name: Compile Framework repo
         run: |
           cd ${{ inputs.path }}
