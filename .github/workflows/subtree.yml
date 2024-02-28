@@ -17,8 +17,9 @@ jobs:
         ls -al /bin/sh
     - name: Switch shell
       run: |
-        ln -s /bin/bash /bin/sh.bash
-        mv /bin/sh.bash /bin/sh
+        sudo ln -s /bin/bash /bin/sh.bash
+        sudo mv /bin/sh.bash /bin/sh
+        ls -al /bin/sh
     # Runs a single command using the runners shell
     - name: Checkout Repository
       uses: actions/checkout@v4 
