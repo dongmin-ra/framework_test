@@ -12,6 +12,13 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
+    - name: Show shell
+      run: |
+        ls -al /bin/sh
+    - name: Switch shell
+      run: |
+        ln -s /bin/bash /bin/sh.bash
+        mv /bin/sh.bash /bin/sh
     # Runs a single command using the runners shell
     - name: Checkout Repository
       uses: actions/checkout@v4 
